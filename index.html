@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+          <title>Demo Email Button</title>
+          
+          <!-- adding jquery, bootstrap and angular cdn -->
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </head>
+
+    <body>
+          <!-- Div contains the angular app and controller -->
+          <div ng-app="emailApp" ng-controller="EmailAppController">
+            <div class="container" style= "padding-top: 60px"> 
+
+            
+                <div class="input-group">
+                      <!-- 'To' Button -->
+                      <span class="input-group-addon" style="background-color:transparent !important" id="basic-addon1">To</span>
+                      
+                      <!-- email address button when email is spacebar is pressed and email is a valid email -->
+                      <span class="input-group-addon" style="background-color:transparent !important" ng-show="showbutton" class="ng-hide">
+                          <button type="button" class="btn btn-default btn-xs" ng-show="showbutton" class="ng-hide">{{buttontext}}
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="removebtn()"></span>
+                          </button>
+                      </span>
+
+                      <!-- text box to get email and validate when spacebar is pressed -->
+                      <input type="text" id="textbox" class="form-control" ng-model="useremail" placeholder="email" aria-describedby="basic-addon1" ng-keyup="($event.keyCode == 32) ? validateEmail(useremail) : ''" >
+                </div> 
+                  
+                    <!-- error messae to be shown if the email is not valid -->
+                    <div ng-show="showmessage" class="ng-hide" >{{message}}</div>
+
+                     <!-- this directive can be used for multiple email addresses -->
+                    <!-- <btndirective id="emlbtn" text='buttontext'></btndirective> -->
+             </div>
+          </div>
+    </body>
+
+    <!-- adding other script files including  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="AppCtrl.js"></script>
+    <script type="text/javascript" src="AppDirective.js"></script>
+</html>
